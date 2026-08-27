@@ -1,60 +1,110 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+ 
 <head>
     <meta charset="UTF-8">
-    <title>MeuCurrículo</title>
-     <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <title>Cadastro</title>
+ 
+    <link rel="stylesheet" href="style.css"> <!--Conecta o css-->
 </head>
-
+ 
 <body>
+ 
+    <main class="container">
+ 
+        <section class="card"> <!--Criando uma class chamada card-->
+            <section class="logo">
+            <img src="img/Captura de tela 2026-08-24 195016.png" alt="logo">
+            </section>
+ 
+            <h1>Cadastrar</h1>
+ 
+            <p class="subtitle">
+                Preencha os dados abaixo
+            </p>
+ 
+            <form id="cadastroForm"> <!--Criando uma id para cadrasto-->
+ 
+                <label for="usuario">
+                    Usuario
+                </label>
+ 
+                <input
+                    type="text"
+                    id="usuario"
+                    placeholder="seu usuario"
+                    required
+                > <!--Criando um input para selecionar irformações-->
+ 
+                <label for="email">
+                    E-mail
+                </label>
+ 
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="seu@email.com"
+                    required
+                >
+ 
+                 <label for="numero">
+                    Numero
+                </label>
+ 
+                <input
+                    type="numero"
+                    id="numero"
+                    placeholder="numero de telefone"
+                    required
+                >
+ 
+                <label for="senha">
+                    Senha
+                </label>
+ 
+                <input
+                    type="password"
+                    id="senha"
+                    placeholder="Crie uma senha"
+                    minlength="6"
+                    required
+                >
+ 
+                <label for="confirmarSenha">
+                    Confirmar senha
+                </label>
+ 
+                <input
+                    type="password"
+                    id="confirmarSenha"
+                    placeholder="Digite a senha novamente"
+                    minlength="6"
+                    required
+                >
+ 
+                <button type="submit"> <!--Criando um botão-->
+                    Cadastrar
+                </button>
 
-    <header>
-        <h2>📄 MeuCurrículo</h2>
-
-        <nav>
-            <a href="">Início</a>
-            <a href="#">Modelos</a>
-            <a href="#">Dicas</a>
-            <a href="#">Sobre nós</a>
-            <a href="#">Entrar</a>
-        </nav>
-    </header>
-
-    <main>
-
-        <h1>
-            Crie seu currículo<br>
-            profissional em minutos
-        </h1>
-
-        <p>
-            Modelos prontos, dicas profissionais<br>
-            e tudo que você precisa para conquistar<br>
-            sua vaga.
-        </p>
-
-        <button>
-            Criar currículo grátis
-        </button>
-
-        
-
-        <div>
-            <h2>📄</h2>
-            <h3>Seu currículo profissional</h3>
-
-            <p>Nome completo</p>
-            <p>Profissão</p>
-            <p>Experiência profissional</p>
-            <p>Formação acadêmica</p>
-            <p>Habilidades</p>
-        </div>
-
+                 
+ 
+            </form>
+ 
+ 
+            <p id="mensagem"></p> <!--Criando uma id para mensagem-->
+ 
+        </section>
+ 
     </main>
-
+ 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
  
     <script src="script.js"></script> <!--link conector Javascript-->
-
+ 
+   
 </body>
+ 
 </html>
+ 
