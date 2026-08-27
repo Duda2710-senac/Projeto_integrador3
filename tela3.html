@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app">
+
+        <!-- BARRA LATERAL -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-top">
+                <div class="logo">
+                    <span class="logo-mark">📋</span>
+                    <span class="logo-text">My Resume</span>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li>
+                            <a href="#" class="nav-link active">
+                                <span class="nav-icon"></span>
+                                <span class="nav-label">Início</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="curriculo.html" class="nav-link">
+                                <span class="nav-icon"></span>
+                                <span class="nav-label">Meus currículos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"></span>
+                                <span class="nav-label">Modelos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"></span>
+                                <span class="nav-label">Dicas</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"></span>
+                                <span class="nav-label">Configurações</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="IA.html" class="nav-link">
+                                <span class="nav-icon"></span>
+                                <span class="nav-label">Assistente IA</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="sidebar-bottom">
+                <a href="#" class="nav-link nav-link-exit">
+                    <span class="nav-icon"></span>
+                    <span class="nav-label">Sair</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- BOTÃO PARA ABRIR/FECHAR NO MOBILE -->
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Abrir menu">☰</button>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="content">
+
+            <header>
+                <h1>Olá, João!</h1>
+                <p>Bem-vindo de volta ao MeuCurriculo</p>
+            </header>
+
+            <div class="section-header section-header-first">
+                <h4>Meus currículos</h4>
+                <button class="btn-ghost">Ver Todos</button>
+            </div>
+
+            <section class="curriculos curriculo-card">
+                <div class="curriculo-thumb">
+                <img src="imagensprojeto/modelo.jpg" alt="">
+                </div>
+                <div class="curriculo-info">
+                    <h4 class="curriculo-title">Currículo Profissional</h4>
+                    <p>Atualizado em 17/07/2026</p>
+                    <span class="badge badge-success">Concluído</span>
+                </div>
+            </section>
+
+            <h4>Ações rápidas</h4>
+
+            <div class="botao1">
+                <button class="action-card action-card-primary">
+                    <span class="action-icon action-icon-primary">+</span>
+                    Criar novo currículo
+                </button>
+                <button class="action-card">
+                    <span class="action-icon action-icon-secondary">📄</span>
+                    Ver modelos
+                </button>
+            </div>
+
+            <h4>Dicas para você</h4>
+
+            <section class="curriculos dica-card">
+                <span class="dica-icon">💡</span>
+                <div class="botao2">
+                    <p><strong>Complete todas as seções do seu currículo</strong></p>
+                    <p class="dica-text">Isso aumenta suas chances de aprovação para uma entrevista.</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        const toggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+
+        toggle.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+        });
+    </script>
+
+</body>
+</html>

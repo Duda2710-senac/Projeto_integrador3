@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Resume · Assistente de IA</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- BARRA LATERAL -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+            <div class="logo">
+                <span class="logo-mark">📋</span>
+                <span class="logo-text">My Resume</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="tela3.html" class="nav-link">
+                            <span class="nav-icon"></span>
+                            <span class="nav-label">Início</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="curriculo.html" class="nav-link">
+                            <span class="nav-icon"></span>
+                            <span class="nav-label">Meus currículos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"></span>
+                            <span class="nav-label">Modelos</span>
+                        </a>
+                    </li>
+                    <li>
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"></span>
+                                <span class="nav-label">Dicas</span>
+                            </a>
+                        </li>
+                    <li>
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"></span>
+                            <span class="nav-label">Configurações</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="IA.html" class="nav-link active">
+                            <span class="nav-icon"></span>
+                            <span class="nav-label">Assistente IA</span>
+                            <span class="nav-badge">novo</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <a href="#" class="nav-link nav-link-exit">
+                <span class="nav-icon"></span>
+                <span class="nav-label">Sair</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- BOTÃO PARA ABRIR/FECHAR NO MOBILE -->
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Abrir menu">☰</button>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="content content-wide">
+
+        <header class="assistant-header-block">
+            <h1>Assistente de currículo</h1>
+            <p>Converse com a IA e construa seu currículo em tempo real</p>
+            <span class="assistant-status"><span class="dot"></span>Online</span>
+        </header>
+
+        <div class="assistant-grid">
+
+            <!-- Coluna do chat -->
+            <section class="chat-panel">
+                <div class="chat-scroll" id="chatScroll">
+                    <!-- mensagens injetadas pelo script.js -->
+                </div>
+
+                <div class="quick-replies" id="quickReplies"></div>
+
+                <form class="composer" id="composerForm">
+                    <button type="button" class="composer-icon" title="Anexar arquivo" tabindex="-1">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M17 8.5 9.7 15.8a3 3 0 1 1-4.2-4.2l7.8-7.8a2 2 0 1 1 2.8 2.8l-7.6 7.6a1 1 0 1 1-1.4-1.4l6.9-6.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <input type="text" id="composerInput" placeholder="Digite sua resposta…" autocomplete="off">
+                    <button type="submit" class="composer-send" aria-label="Enviar">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </form>
+            </section>
+
+            <!-- Coluna de pré-visualização -->
+
+            <aside class="preview-panel">
+                <div class="preview-card">
+                    <div class="preview-card-head">
+                        <span>Pré-visualização</span>
+                        <span class="preview-status" id="previewStatus">Em andamento</span>
+                    </div>
+
+                    <div class="resume-sheet" id="resumeSheet">
+                        <div class="resume-avatar" id="resumeAvatar">?</div>
+                        <div class="resume-name placeholder" id="resumeName">Seu nome aparece aqui</div>
+                        <div class="resume-role placeholder" id="resumeRole">Cargo desejado</div>
+
+                        <div class="resume-block">
+                            <h4>Resumo</h4>
+                            <p class="placeholder" id="resumeSummary">Ainda não preenchido</p>
+                        </div>
+
+                        <div class="resume-block">
+                            <h4>Experiência</h4>
+                            <p class="placeholder" id="resumeExperience">Ainda não preenchido</p>
+                        </div>
+
+                        <div class="resume-block">
+                            <h4>Formação</h4>
+                            <p class="placeholder" id="resumeEducation">Ainda não preenchido</p>
+                        </div>
+
+                        <div class="resume-block">
+                            <h4>Habilidades</h4>
+                            <div class="skill-chips" id="resumeSkills">
+                                <span class="placeholder">Ainda não preenchido</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="progress-track">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-label"><span id="progressPct">0%</span> concluído</div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+</div>
+
+<script>
+    const toggle = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('sidebar');
+    toggle.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+    });
+
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+</body>
+</html>
