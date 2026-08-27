@@ -1,3 +1,116 @@
-<!DOCTYPE html><html lang="pt-BR"> <head>    <meta charset="UTF-8">    <title>MeuCurrículo</title>     <link rel="stylesheet" href="style.css">    <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>Cadastro</title>     <link rel="stylesheet" href="style.css"> <!--Conecta o css--></head> <body>     <main class="container">         <section class="card"> <!--Criando uma class chamada card-->            <section class="logo">            <img src="img/Captura de tela 2026-08-24 195016.png" alt="logo">            </section>             <h1>Cadastrar</h1>             <p class="subtitle">                Preencha os dados abaixo            </p>             <form id="cadastroForm"> <!--Criando uma id para cadrasto-->                 <label for="usuario">                    Usuario                </label>                 <input                    type="text"                    id="usuario"                    placeholder="seu usuario"                    required                > <!--Criando um input para selecionar irformações-->                 <label for="email">                    E-mail                </label>                 <input                    type="email"                    id="email"                    placeholder="seu@email.com"                    required                >                  <label for="numero">                    Numero                </label>                 <input                    type="numero"                    id="numero"                    placeholder="numero de telefone"                    required                >                 <label for="senha">                    Senha                </label>                 <input                    type="password"                    id="senha"                    placeholder="Crie uma senha"                    minlength="6"                    required                >                 <label for="confirmarSenha">                    Confirmar senha                </label>                 <input                    type="password"                    id="confirmarSenha"                    placeholder="Digite a senha novamente"                    minlength="6"                    required                >                 <button type="submit"> <!--Criando um botão-->                    Cadastrar                </button>    <header>        <h2>📄 MeuCurrículo</h2>        <nav>            <a href="">Início</a>            <a href="#">Modelos</a>            <a href="#">Dicas</a>            <a href="#">Sobre nós</a>            <a href="#">Entrar</a>        </nav>    </header>    <main>        <h1>            Crie seu currículo<br>            profissional em minutos        </h1>        <p>            Modelos prontos, dicas profissionais<br>            e tudo que você precisa para conquistar<br>            sua vaga.        </p>        <button>            Criar currículo grátis        </button>        <div>            <h2>📄</h2>            <h3>Seu currículo profissional</h3>            <p>Nome completo</p>            <p>Profissão</p>            <p>Experiência profissional</p>            <p>Formação acadêmica</p>            <p>Habilidades</p>        </div>                 <button    type="button"    onclick="testarConexao()">    Testar conexão</button>             </form>              <p id="mensagem"></p> <!--Criando uma id para mensagem-->         </section>     </main>     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>     <script src="script.js"></script> <!--link conector Javascript-->    </body></html> </html> 
-Collapse file‎script.js‎Copy file name to clipboard+79Lines changed: 79 additions & 0 deletionsOriginal file line numberDiff line numberDiff line change@@ -0,0 +1,79 @@const SUPABASE_URL = "https://ecxpqfjhgmmrlkwvfwcb.supabase.co"; const SUPABASE_PUBLISHABLE_KEY =    "sb_publishable__kEK59Xeoo9jxoMgHNY3Kw_1r2D40rg"; const clienteSupabase = window.supabase.createClient(    SUPABASE_URL,    SUPABASE_PUBLISHABLE_KEY);   async function testarConexao() {    const { data, error } = await clienteSupabase        .from("login")        .select("*")        .limit(1);    if (error) {        console.error(error);        document.getElementById("mensagem").textContent =            "Erro ao conectar com o Supabase.";        return;    }    console.log(data);    document.getElementById("mensagem").textContent =        "Conexão com o Supabase funcionando!";}   const loginForm =    document.getElementById("loginForm"); if (loginForm) {     loginForm.addEventListener(        "submit",        async function(event) {             event.preventDefault();             const email =                document.getElementById("email").value;             const senha =                document.getElementById("senha").value;             const { data, error } =                await clienteSupabase.auth.signInWithPassword({                    email: email,                    password: senha                });             if (error) {                 console.error(error);                 document.getElementById("mensagem").textContent =                    "E-mail ou senha incorretos.";                 return;            }             console.log(data);             window.location.href =                "painel.html";        }    );}   
-Collapse file‎style.css‎Copy file name to clipboard+70-135Lines changed: 70 additions & 135 deletionsOriginal file line numberDiff line numberDiff line change@@ -1,159 +1,94 @@* {    margin: 0;    padding: 0;    box-sizing: border-box;    font-family: Arial, sans-serif;} body {    font-family: Arial, Helvetica, sans-serif;    background: #1b65d4;    color: #103985;    background-color: #071d45;    color: white;}/* CABEÇALHO */header {    height: 70px;    background-color: #071d45; .container {    min-height: 100vh;    display: flex;    align-items: center;    justify-content: space-between;    padding: 0 8%;    justify-content: center;    padding: 20px;} .card {    width: 100%;    max-width: 420px;    background: white;    padding: 35px;    border-radius: 14px;    box-shadow: 0 10px 30px #071d45;} h1 {    text-align: center;    margin-bottom: 8px;}header h2 {    font-size: 22px; .subtitle {    text-align: center;    color: #666;    margin-bottom: 25px;}nav { form {    display: flex;    align-items: center;    gap: 30px;}nav a {    color: white;    text-decoration: none;    font-size: 15px;    flex-direction: column;}nav a:last-child {    background-color: #0867f2;    padding: 12px 22px;    border-radius: 6px; label {    margin-bottom: 6px;    font-weight: bold;}/* ÁREA PRINCIPAL */main {    min-height: calc(100vh - 70px);    display: flex;    align-items: center;    justify-content: space-between;    padding: 60px 10%;    background: linear-gradient(135deg, #071d45, #092d63);}/* TEXTO */main > h1,main > p,main > button {    position: absolute;    left: 10%;}main > h1 {    top: 32%;    font-size: 48px;    line-height: 1.1;    max-width: 550px;}main > p {    top: 53%;    color: #d4dced;    font-size: 17px;    line-height: 1.6;}main > button {    top: 67%;    background-color: #0867f2;    color: white; input {    padding: 12px;    margin-bottom: 18px;    border: 1px solid #ccc;    border-radius: 7px;    font-size: 16px;} button {    padding: 12px;    border: none;    padding: 15px 25px;    border-radius: 6px;    font-size: 15px;    font-weight: bold;    border-radius: 7px;    background: #103985;    color: white;    font-size: 16px;    cursor: pointer;}/* CURRÍCULO */main > div {    position: absolute;    right: 12%;    top: 22%;    width: 330px;    height: 440px;    background-color: white;    color: #172033;    padding: 30px;    border-radius: 8px;    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);    transform: rotate(3deg); .link-text {    margin-top: 20px;    text-align: center;}main > div h2 {    color: #0867f2;    font-size: 35px;    margin-bottom: 20px; #mensagem {    margin-top: 18px;    text-align: center;}main > div h3 {    font-size: 20px;    margin-bottom: 8px; .painel-info {    background: #f7f7f7;    border-radius: 8px;    padding: 16px;    margin-bottom: 20px;    word-break: break-word;}main > div p {    color: #667085;    margin-bottom: 15px;    font-size: 14px;.logo img{    width: 190px;    height: auto;    display: block;    margin: 0 auto 20px;}/* RESPONSIVIDADE */@media (max-width: 800px) {    header {        padding: 0 5%;    }    nav {        gap: 10px;    }    nav a:not(:last-child) {        display: none;    }    main {        flex-direction: column;        padding: 40px 5%;    }    main > h1,    main > p,    main > button {        position: static;        margin-bottom: 20px;    }    main > h1 {        font-size: 36px;    }    main > div {        position: static;        transform: none;        margin-top: 30px;    }}
+<!DOCTYPE html>
+<html lang="pt-BR">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <title>Cadastro</title>
+ 
+    <link rel="stylesheet" href="style.css"> <!--Conecta o css-->
+</head>
+ 
+<body>
+ 
+    <main class="container">
+ 
+        <section class="card"> <!--Criando uma class chamada card-->
+            <section class="logo">
+            <img src="img/Captura de tela 2026-08-24 195016.png" alt="logo">
+            </section>
+ 
+            <h1>Cadastrar</h1>
+ 
+            <p class="subtitle">
+                Preencha os dados abaixo
+            </p>
+ 
+            <form id="cadastroForm"> <!--Criando uma id para cadrasto-->
+ 
+                <label for="usuario">
+                    Usuario
+                </label>
+ 
+                <input
+                    type="text"
+                    id="usuario"
+                    placeholder="seu usuario"
+                    required
+                > <!--Criando um input para selecionar irformações-->
+ 
+                <label for="email">
+                    E-mail
+                </label>
+ 
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="seu@email.com"
+                    required
+                >
+ 
+                 <label for="numero">
+                    Numero
+                </label>
+ 
+                <input
+                    type="numero"
+                    id="numero"
+                    placeholder="numero de telefone"
+                    required
+                >
+ 
+                <label for="senha">
+                    Senha
+                </label>
+ 
+                <input
+                    type="password"
+                    id="senha"
+                    placeholder="Crie uma senha"
+                    minlength="6"
+                    required
+                >
+ 
+                <label for="confirmarSenha">
+                    Confirmar senha
+                </label>
+ 
+                <input
+                    type="password"
+                    id="confirmarSenha"
+                    placeholder="Digite a senha novamente"
+                    minlength="6"
+                    required
+                >
+ 
+                <button type="submit"> <!--Criando um botão-->
+                    Cadastrar
+                </button>
+
+                 <button
+    type="button"
+    onclick="testarConexao()"
+>
+    Testar conexão
+</button>
+
+ 
+            </form>
+ 
+ 
+            <p id="mensagem"></p> <!--Criando uma id para mensagem-->
+ 
+        </section>
+ 
+    </main>
+ 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+ 
+    <script src="script.js"></script> <!--link conector Javascript-->
+ 
+   
+</body>
+ 
+</html>
+ 
